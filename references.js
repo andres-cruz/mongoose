@@ -1,31 +1,12 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/demo_2');
+mongoose.connect('mongodb://localhost/demo_2', { useNewUrlParser: true });
 
-// Post
-const postSchema = new mongoose.Schema({
-    title: String,
-    content: String
-});
-
-const Post = mongoose.model('Post', postSchema);
-
-// User
-const userSchema = new mongoose.Schema({
-    email: String,
-    name: String,
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Post'
-        }
-    ]
-});
-
-const User = mongoose.model('User', userSchema);
+const Post = require('./models/post');
+const User = require('./models/user');
 
 // Post.create({
-//     title: 'About travels and life',
+//     title: 'The coder life',
 //     content: 'blah bla blah'
 // }, (err, post) => {
 //     if(err) {

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/demo');
+mongoose.connect('mongodb://localhost/demo', { useNewUrlParser: true });
 
 // Post
 const postSchema = new mongoose.Schema({
